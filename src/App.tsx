@@ -42,9 +42,6 @@ export const App = () => {
 
           <Link to="/frontend-rocks/dettaglio/1">Link alla pagina dettaglio</Link>
 
-          <p className="text-center">
-            Modifica <code>src/App.tsx</code> e salva per testare l'hot reload
-          </p>
         </div>
       </div>
     </div>
