@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 export const Detail = () => {
-  return <div className="text-6xl">Dettaglio</div>
+  const { id } = useParams();
+  return <div className="text-6xl">Dettaglio: {id}</div>
 }
 
 export const App = () => {
   const [count, setCount] = useState(0);
-  const [title, setTitle] = useState("POKEngina");
+  const [title, setTitle] = useState("POKEn");
 
   useEffect(() => {
     if (count == 69690){
