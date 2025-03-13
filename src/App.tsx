@@ -40,7 +40,7 @@ export const App = () => {
             Cambia
           </button>
 
-          <Link to="/frontend-rocks/dettaglio/1">Link alla pagina dettaglio</Link>
+          <Link to="/frontend-rocks/dettaglio/1">borno </Link>
 
         </div>
       </div>
