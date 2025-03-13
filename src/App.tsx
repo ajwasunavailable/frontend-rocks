@@ -8,9 +8,21 @@ interface Pokemon {
   types: string[];
 }
 
-async function fetchData(): Promise<string[]> {
+async function fetchData(): Promise<Pokemon[]> {
   const data = await PokeAPI.getPokemonFormsList();
-  return data.results.map(item => item.name);
+  const pokemons = await Promise.all(
+  data.results.map((pokemon) => {
+    return PokeAPI.getPokemonByName(pokemon.name);
+  }
+));
+  return pokemons.map((pokemon) => {
+    return {
+      id: pokemon.id,
+      name: pokemon.name,
+      image: pokemon.sprites.other["official-artwork"].front_shiny ?? "",
+      types: pokemon.types.map((t) => t.type.name),
+    }
+  });
 }
 
 const typeColors: { [key : string]: string } = {
@@ -45,9 +57,9 @@ export const App = () => {
       setData(
         result.map((item) => ({
           id: 1,
-          name: item,
-          image: item,
-          types: [item],
+          name: item.name,
+          image: item.image,
+          types: item.types,
         }))
       );
     });
